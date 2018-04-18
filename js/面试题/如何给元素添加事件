@@ -1,0 +1,32 @@
+第一种，直接在html代码上设置标签的事件处理，代码示例：
+<!DOCTYPE html>  
+<html>  
+    <head>  
+    </head>  
+<body>  
+    <p id="p">点击按钮就执行displayDate()函数</p>  
+    <button id="id" onclick="displayDate()">点击</button>//在此处onclick中只需要写出事件发生后对应处理的js代码即可  
+    <script>  
+     function displayDate(){  
+        document.getElementById("p").innerHTML="fighting";  
+    };  
+    </script>  
+</body>  
+</html>   
+
+第二种，将html与js代码彻底分离，在js中为指定元素添加事件处理，代码示例：
+<!DOCTYPE html>  
+<html>  
+    <head>  
+    </head>  
+<body>  
+    <p id="p">点击按钮就执行displayDate()函数</p>  
+    <button id="id">点击</button>  
+    <script>
+        document.getElementById("id").onclick=function(){displayDate()};/*注意！此处必须将处理时所调用的函数嵌套在一个函数定义中，至于这样做的原因，经过翻查，还是没有找到*/  
+         function displayDate(){  
+            document.getElementById("p").innerHTML="fighting";  
+        };  
+    </script>  
+</body>  
+</html>  
