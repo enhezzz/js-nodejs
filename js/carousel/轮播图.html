@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box
+        }
+        .wraper{
+            width: 1080px;
+            height: 300px;
+            margin: 100px auto;
+            position: relative;
+        }
+        .banner{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            opacity: 0;
+            transition: opacity 2s;
+        }
+        .banner.active{
+         
+            opacity: 1;
+        }
+        .banner>img{
+            width: 100%;
+            height: 100%;
+        }
+        .prev,.next{
+            width: 50px;
+            height: 100px;
+            display: none;
+            position: absolute;
+            top: 50%;
+            
+        }
+        .wraper:hover .prev,.wraper:hover .next{
+            background: rgba(210, 210, 210, .4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white
+        }
+       
+        .prev{
+            left: 30px;
+            transform: translateY(-50%);
+        }
+        .next{
+            right: 30px;
+            transform: translateY(-50%);
+        }
+        .controler{
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            overflow: hidden;
+        }
+        .controler>span{
+            float: left;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #aaa;
+            border-radius: 50%;
+            margin-left: 5px
+        }
+        .controler>span.on{
+         background: #ccc
+        }
+    </style>
+</head>
+<body>
+    <div class="wraper">
+        <div class="banner active">
+            <img src="./1.jpg" alt="">
+        </div>
+        <div class="banner">
+            <img src="./2.png" alt="">
+        </div>
+        <div class="banner">
+            <img src="./3.png" alt="">
+        </div>
+        <div class="controler">
+            <span class="on"></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="prev"><</div>
+        <div class="next">></div>
+    </div>
+</body>
+<script src="./main.js"></script>
+<script>
+    let controlers = document.querySelectorAll('.controler>span');
+    let nexter = document.querySelector('.next');
+    let prever = document.querySelector('.prev');
+    let banners = document.querySelectorAll('.banner');
+    let wraper = document.querySelector('.wraper');
+    carousel(wraper,banners,prever,nexter,controlers);
+</script>
+</html>
