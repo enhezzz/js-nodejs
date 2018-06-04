@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            margin: 0
+        }
+
+        ul {
+            list-style: none;
+            margin: 0
+        }
+
+        .carousel {
+            width: 600px;
+            height: 300px;
+            margin: 100px auto;
+            border: 1px solid #ccc;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .carousel>.slider {
+            width: 2400px;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            transition: all 1s
+        }
+
+        .carousel>.slider>img {
+            width: 600px;
+            height: 100%;
+            float: left;
+        }
+
+        .carousel>.arrow {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 70px;
+            height: 100%;
+
+        }
+
+        .carousel>.arrow.right {
+            background: linear-gradient(90deg, rgba(233, 233, 233, .7), rgba(189, 189, 189, .7));
+            right: 0;
+        }
+
+        .carousel>.arrow.left {
+            background: linear-gradient(90deg, rgba(189, 189, 189, .7), rgba(233, 233, 233, .7));
+            left: 0;
+        }
+
+        .carousel>.arrow.right,
+        .carousel>.arrow.left {
+            /* display: none; */
+            opacity: 0;
+            transition: opacity .4s
+        }
+
+        .carousel:hover .arrow.right,
+        .carousel:hover .arrow.left {
+            opacity: 1
+            /* display: block; */
+        }
+
+        .carousel>.controler {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            display: flex;
+            justify-content: center
+        }
+
+        .carousel>.controler>ul {
+            padding: 6px;
+            border-radius: 3px;
+            display: flex;
+            background: rgba(233, 233, 233, .7);
+            margin: 0 auto
+        }
+
+        .carousel>.controler>ul>li {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: rgb(189, 189, 189)
+        }
+
+        .carousel>.controler>ul>li:not(:last-child) {
+            margin-right: 5px
+        }
+
+        .carousel>.controler>ul>li.active {
+            background: rgb(211, 211, 211)
+        }
+    </style>
+</head>
+
+<body>
+    <div class="carousel">
+        <div class="slider">
+            <img src="./imgs/1.jpg" alt="">
+            <img src="./imgs/2.png" alt="">
+            <img src="./imgs/3.png" alt="">
+            <img src="./imgs/2.png" alt="">
+        </div>
+        <div class="arrow left"></div>
+        <div class="arrow right"></div>
+        <div class="controler">
+            <ul>
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script src="./main.js"></script>
+<script>
+
+    // let picIndex = 0;
+    // let timer = null;
+    let slider = document.querySelector('.carousel>.slider');
+    let container = document.querySelector('.carousel');
+    let controlers = document.querySelectorAll('.carousel>.controler li');
+    let leftArrow = document.querySelector('.carousel>.arrow.left');
+    let rightArrow = document.querySelector('.carousel>.arrow.right');
+    carousel(container,slider,leftArrow,rightArrow,controlers)
+    // timer = setInterval(function () {
+    //     if (picIndex > 3) {
+    //         picIndex = 0;
+    //     }
+    //     slider.style.left = -picIndex * 600 + 'px';
+    //     controlers.forEach((controler) => {
+    //         controler.classList.remove('active');
+    //     })
+    //     controlers[picIndex].classList.add('active')
+    //     picIndex++;
+    //     // console.log(picIndex > 4)
+    //     // console.log(picIndex)
+    // }, 2000);
+    // carousel.onmouseenter = function () {
+    //     clearInterval(timer);
+    // }
+    // carousel.onmouseleave = function () {
+    //     timer = setInterval(function () {
+    //         if (picIndex > 3) {
+    //             picIndex = 0;
+    //         }
+    //         slider.style.left = -picIndex * 600 + 'px';
+    //         controlers.forEach((controler) => {
+    //             controler.classList.remove('active');
+    //         })
+    //         controlers[picIndex].classList.add('active')
+    //         picIndex++;
+    //         // console.log(picIndex > 4)
+    //         // console.log(picIndex)
+    //     }, 2000);
+    // }
+    // leftArrow.onclick = function () {
+    //     picIndex--;
+    //     if (picIndex < 0)
+    //         picIndex = 3;
+    //     slider.style.left = -picIndex * 600 + 'px';
+    //     controlers.forEach((controler) => {
+    //         controler.classList.remove('active');
+    //     })
+    //     controlers[picIndex].classList.add('active')
+    // }
+    // rightArrow.onclick = function () {
+    //     picIndex++;
+    //     if (picIndex > 3)
+    //         picIndex = 0;
+    //     slider.style.left = -picIndex * 600 + 'px';
+    //     controlers.forEach((controler) => {
+    //         controler.classList.remove('active');
+    //     })
+    //     controlers[picIndex].classList.add('active')
+    // }
+    // controlers.forEach((controler, index) => {
+    //     controler.onclick = function () {
+    //         picIndex = index;
+    //         slider.style.left = -picIndex * 600 + 'px';
+    //         controlers.forEach((controler) => {
+    //             controler.classList.remove('active');
+    //         })
+    //         controlers[picIndex].classList.add('active')
+    //     }
+    // })
+
+</script>
+
+</html>
