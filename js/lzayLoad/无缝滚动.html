@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,body{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            padding-top: 1000px;
+        }
+        .container .item{
+            width: 80%;
+            margin: 0 auto;
+            line-height: 50px;
+            text-align: center;
+            border: 1px solid  #ccc;
+        }
+        .footer{
+            line-height: 50px;
+            text-align: center;
+            border: 5px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item">132</div>
+    </div>
+    <div class="footer">footer</div>
+</body>
+<script>
+    let container = document.querySelector('.container'),
+        footer = document.querySelector('.footer');
+    let appendChild = (function (){
+        let index = 0;
+        let arr = Array(500).fill(undefined).map((e,i)=>{
+            return `我是第${i+1}个元素`}
+        );
+        return (container)=>{
+            let divs = [];
+            for(let i = 0;i < 20;i++){
+                let div = document.createElement('div');
+                div.classList.add('item')
+                div.textContent = arr[index];
+                index++;
+                divs.push(div)
+            };
+            let outDiv = document.createElement('div');
+            divs.forEach((e,i)=>{
+                outDiv.appendChild(e);
+            });
+            container.appendChild(outDiv);
+        }
+    })()
+    let observable = new IntersectionObserver((observers) => {
+        observers.forEach((e,i) =>{
+            let target = e.target;
+            if(e.intersectionRatio>0){
+                appendChild(container);
+            }
+        })
+    })
+    observable.observe(footer);
+
+</script>
+</html>
